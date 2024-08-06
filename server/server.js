@@ -18,7 +18,7 @@ app.use(express.json(), cors());
 dotenv.config();
 
 // Use the router middleware to handle API routes under /api prefix
-app.use('api', router)
+app.use('/api', router)
 
 // Start server and listen to port
 const PORT = process.env.PORT;

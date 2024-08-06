@@ -24,7 +24,7 @@ const tradeSchema = new Schema(
         },
         price: {
             type: Number,
-            require: [true, "Purachase price required"],
+            require: [true, "Purchase price required"],
             min: [0.01, "Price must be atleast $0.01"],
             max: [25000, "Is this stock really more than $25,000 a share"]
         },

@@ -2,7 +2,7 @@ import Trade from "../models/trade.model.js"
 
 async function createTrade (req, res) {
     try {
-        const newTrade = await Trade.create(req,body)
+        const newTrade = await Trade.create(req.body)
         const trade = await newTrade.save()
         res.json(newTrade)
     } catch (error) {

@@ -1,6 +1,6 @@
 import React from 'react'
 
-function EquityCurve() {
+const EquityCurve = () => {
     return (
         <div>EquityCurve</div>
     )

@@ -1,9 +1,17 @@
+import { Link } from 'react-router-dom'
 
-
-function Dashboard() {
+const Dashboard = () => {
     return (
-        <div>Dashboard</div>
-    )
+        <div>
+            <h1>Dashboard</h1>
+            <button>
+                <Link to="/add">Add trade</Link>
+            </button>
+            <button>
+                <Link to="/ledger">Ledger</Link>
+            </button>
+        </div>
+    );
 }
 
 export default Dashboard

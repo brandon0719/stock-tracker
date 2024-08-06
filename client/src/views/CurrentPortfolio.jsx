@@ -1,6 +1,6 @@
 import React from 'react'
 
-function CurrentPortfolio() {
+const CurrentPortfolio = () => {
     return (
         <div>CurrentPortfolio</div>
     )

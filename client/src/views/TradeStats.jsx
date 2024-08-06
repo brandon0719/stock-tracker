@@ -1,6 +1,6 @@
 import React from 'react'
 
-function TradeStats() {
+const TradeStats = () => {
     return (
         <div>TradeStats</div>
     )
