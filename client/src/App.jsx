@@ -18,6 +18,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
+        <Navbar />
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/add" element={<AddTrade />} />

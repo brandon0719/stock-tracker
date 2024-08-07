@@ -49,7 +49,7 @@ async function deleteOneTrade (req, res) {
     try {
         const deleteTrade = await Trade.findByIdAndDelete(req.params.id)
         res.json(deleteTrade)
-    } catch {
+    } catch(error) {
         console.log(error)
         res.status(400).json(error)
     }

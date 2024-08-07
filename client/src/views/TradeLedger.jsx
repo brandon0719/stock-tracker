@@ -1,5 +1,6 @@
 import StockService from "../services/StockService"
 import { useState, useEffect } from 'react' 
+import { Link } from "react-router-dom"
 
 const TradeLedger = (props) => {
     const [stocks, setStocks] = useState([])
@@ -41,6 +42,14 @@ const TradeLedger = (props) => {
             })
     }, [])
 
+    const deleteHandler = (id) => {
+        StockService.deleteOneStock(id)
+            .then((res) => {
+                console.log(res)
+                const filteredList = stocks.filter((stock) => stock._id !== id)
+                setStocks(filteredList)
+            })
+    }
 
     return (
         <div>
@@ -63,8 +72,8 @@ const TradeLedger = (props) => {
                     </thead>
                     <tbody>
                         {
-                            stocks.map((stock, i) => (
-                                <tr key={i}>
+                            stocks.map((stock) => (
+                                <tr key={stock._id}>
                                     <td>{dateChanger(stock.date)}</td>
                                     <td>{stock.ticker}</td>
                                     <td>{stock.buySell}</td>
@@ -73,8 +82,8 @@ const TradeLedger = (props) => {
                                     <td>{totalCost(stock.price, stock.shares)}</td>
                                     <td>{stock.shaper}</td>
                                     <td>{stock.tactical}</td>
-                                    <td>Edit</td>
-                                    <td>Delete</td>
+                                    <td><button><Link to={`/update/${stock._id}`}>EDIT</Link></button></td>
+                                    <td><button onClick={()=> deleteHandler(stock._id)}>DELETE</button></td>
                                 </tr>
                             ))
                         }

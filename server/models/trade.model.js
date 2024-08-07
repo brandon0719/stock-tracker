@@ -37,6 +37,14 @@ const tradeSchema = new Schema(
             type: String,
             require: [false],
             maxLength: [50, "Cannot be more than 50 characters"]
+        },
+        closeTrade: {
+            type: Boolean,
+            require: [false]
+        },
+        openTrade: {
+            type: Boolean,
+            require: [false]
         }
     },
     { timestamps: true}

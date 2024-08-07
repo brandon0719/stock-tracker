@@ -22,11 +22,10 @@ function addOneStock(stock) {
 }
 
 function deleteOneStock(id) {
-    return http.delete(`/trade/${id})`)
+    return http.delete(`/trades/${id}`)
         .then((res) => res.data)
         .catch((error) => {
-        console.log(error);
-        throw error;
+            throw error;
         });
     }
 

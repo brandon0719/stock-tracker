@@ -1,6 +1,116 @@
 #root {
-  max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  /* padding: 2rem; */
   text-align: center;
+}
+
+.colorsTest {
+  color: #242424;
+  color: #18112d;
+  color: #233039;
+  color: #b4d4ee;
+  color: #004e89;
+  color: #1a689e;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  color: #004e89;
+}
+
+/* Nav Bar */
+
+.navRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #004e89;
+}
+
+.navTitle {
+  display: flex;
+  flex-direction: column;
+  border-right: 2px solid #b4d4ee;
+  padding: 20px;
+  font-weight: bolder;
+}
+
+.navLinks {
+  display: flex;
+  flex-direction: row;
+  gap: 80px;
+  margin-right: 50px;
+  align-items: center;
+  font-size: large;
+  font-weight: bold;
+}
+
+.dashLink {
+  text-decoration: none;
+  color: white;
+}
+
+/* Add trade form */
+
+.tradeFormContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tradeForm {
+  display: flex;
+}
+
+.formCol {
+  display: flex;
+  flex-direction: column;
+  margin: 25px;
+  gap: 5px;
+  width: 225px;
+}
+
+label {
+  font-weight: 800;
+  color: #242424;
+  background-color: white;
+  border: 1px solid #242424;
+  box-shadow: 1px 3px #23303946
+}
+
+select {
+  height: 29px;
+}
+
+p {
+  font-weight: 200;
+  margin-top: 2px;
+  color: #242424;
+  text-align: left;
+}
+
+.confirmTrade, .dashLinkBtn {
+  padding: 10px 20px;
+  margin-top: 30px;
+  background-color: whitesmoke;
+  color: #004e89;
+  border: 3px solid #004e89;
+  border-radius: 20px;
+  font-weight: bolder;
+  font-size: large;
+}
+
+.jsDisabled { /* Same, but when button is disabled */
+  padding: 10px 20px;
+  margin-top: 30px;
+  background-color: lightgray;
+  color: gray;
+  border: 3px solid   ;
+  border-radius: 20px;
+  font-weight: bolder;
+  font-size: large;
 }
