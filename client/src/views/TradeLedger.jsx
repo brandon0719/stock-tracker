@@ -17,8 +17,6 @@ const TradeLedger = (props) => {
         const formattedNumber = new Intl.NumberFormat('en-US', {
             style: 'currency', 
             currency: 'USD',
-            minimumFractionDigits: 0,
-            maximumFractionDigits: 0
         }).format(cost);
         return formattedNumber
     }
@@ -54,7 +52,7 @@ const TradeLedger = (props) => {
     return (
         <div>
             <h1>Trade Ledger</h1>
-            <div>
+            <div className="displayContainer">
                 <table>
                     <thead>
                         <tr>
@@ -65,28 +63,47 @@ const TradeLedger = (props) => {
                             <th>Shares</th>
                             <th>Total Cost</th>
                             <th>Shaper</th>
-                            <th>Tactical</th>
+                            <th>Type</th>
+                            <th>Open</th>
+                            <th>Close</th>
                             <th>Edit</th>
                             <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {
-                            stocks.map((stock) => (
-                                <tr key={stock._id}>
+                        {stocks
+                            .sort((a, b) => new Date(a.date) - new Date(b.date))
+                            .map((stock) => (
+                                <tr key={stock._id} className={`${(stock.openTrade === true) ? 'ledgerBuy' : (stock.closeTrade === true) ? 'ledgerSell' : '' }`}> { /* Conditional class rendering */} 
                                     <td>{dateChanger(stock.date)}</td>
                                     <td>{stock.ticker}</td>
                                     <td>{stock.buySell}</td>
                                     <td>{formattedPrice(stock.price)}</td>
                                     <td>{stock.shares}</td>
-                                    <td>{totalCost(stock.price, stock.shares)}</td>
+                                    <td>
+                                        {totalCost(stock.price, stock.shares)}
+                                    </td>
                                     <td>{stock.shaper}</td>
-                                    <td>{stock.tactical}</td>
-                                    <td><button><Link to={`/update/${stock._id}`}>EDIT</Link></button></td>
-                                    <td><button onClick={()=> deleteHandler(stock._id)}>DELETE</button></td>
+                                    <td>{stock.type}</td>
+                                    <td>{stock.openTrade ? "Yes" : ""}</td>
+                                    <td>{stock.closeTrade ? "Yes" : ""}</td>
+                                    <td>
+                                        <button>
+                                            <Link to={`/update/${stock._id}`}>
+                                                EDIT
+                                            </Link>
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <button
+                                            onClick={() =>
+                                                deleteHandler(stock._id)
+                                            }>
+                                            DELETE
+                                        </button>
+                                    </td>
                                 </tr>
-                            ))
-                        }
+                            ))}
                     </tbody>
                 </table>
             </div>

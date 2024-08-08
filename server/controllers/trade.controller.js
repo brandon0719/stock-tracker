@@ -15,7 +15,7 @@ async function getAllTrades(req, res) {
     try {
         const allTrades = await Trade.find()
         res.json(allTrades)
-    } catch {
+    } catch (error) {
         console.log(error)
         res.status(400).json(error)
     }
@@ -37,9 +37,9 @@ async function editTrade (req, res) {
         runValidators: true
     }
     try {
-        const updatedTrade = await Trade.findByIdAndUpdate(req.params,id, req.body, options)
+        const updatedTrade = await Trade.findByIdAndUpdate(req.params.id, req.body, options)
         res.json(updatedTrade)
-    } catch {
+    } catch (error) {
         console.log(error)
         res.status(400).json(error)
     }

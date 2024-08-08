@@ -2,86 +2,13 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import StockService from "../services/StockService";
 
+import AddTradeHandler from "../hooks/AddTradeHandler";
+
 const AddTrade = (props) => {
     const navigate = useNavigate()
-    // Could use separate states for each, but using single state
-    const [stockState, setStockState] = useState({
-        ticker: "",
-        price: 0,
-        date: 0,
-        shares: 0,
-        buySell: "",
-        shaper: "",
-        tactical: "",
-        closeTrade: "",
-        openTrade: ""
-    })
-
+    // Moved to different file for better organization
+    const { handleChange, stockState, formErrors } = AddTradeHandler()
     const [errors, setErrors] = useState([])
-    const [formErrors, setFormErrors] = useState({
-        ticker: "Ticker required",
-        price: "Price required",
-        date: "Date required",
-        shares: "Shares required",
-        buySell: "Buy or Sell required",
-    })
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-
-        // Update state with the new value
-        setStockState((prevState) => ({
-            ...prevState,
-            [name]: value,
-        }));
-
-        // Validation logic
-        let errorMsg = "";
-
-        if (name === "ticker") {    // Ticker validation
-            if (value) {
-                if (value.length < 2) {
-                    errorMsg = "Ticker must be at least one letter";
-                } else if (value.length > 5) {
-                    errorMsg = "Ticker cannot be more than 5 letters";
-                }
-            } else {                // Dynamic error message
-                errorMsg = "Ticker required";
-            }
-        } else if (name === "price") {
-            if (value) {
-                if (value < 0.01) {
-                    errorMsg = "Price must be at least $0.01";
-                } else if (value > 1000000) {
-                    errorMsg = "Check again, I doubt you have a million dollars";
-                }
-            } else {
-                errorMsg = "Price required";
-            }
-        } else if (name === "shares") {
-            if (value) {
-                if (value < 1) {
-                    errorMsg = "Must be at least one share";
-                }
-            } else {
-                errorMsg = "Shares required";
-            }
-        } else if (name === "buySell") {
-            if (value === "none") {
-                errorMsg = "Buy or Sell required";
-            }
-        } else if (name === "closeTrade") {
-
-        } else if (name === "openTrade") {
-
-        }
-
-        // Update formErrors state
-        setFormErrors((prevFormErrors) => ({
-            ...prevFormErrors,
-            [name]: errorMsg,
-        }))
-    }
 
     // For disabling the button
     const validateForm = () => {
@@ -116,7 +43,8 @@ const AddTrade = (props) => {
                         value={stockState.date}
                         onChange={handleChange}
                     />
-                    {errors.date ? <p>{errors.date.message}</p> : <p> </p>}
+                    {formErrors.date ? <p>{formErrors.date}</p> : <p> </p>}
+                    {errors.date && <p>{errors.date.message}</p>}
                     {/* Shares */}
                     <label htmlFor="shares">Shares</label>
                     <input
@@ -190,38 +118,21 @@ const AddTrade = (props) => {
                     />
                     {formErrors.price ? <p>{formErrors.price}</p> : <p> </p>}
                     {errors.price && <p>{errors.price.message}</p>}
-                    {/* Tactical */}
-                    <label htmlFor="tactical">Tactical</label>
+                    {/* Type */}
+                    <label htmlFor="type">Type</label>
                     <select
-                        name="tactical"
-                        id="tactical"
-                        value={stockState.tactical}
+                        name="type"
+                        id="type"
+                        value={stockState.type}
                         onChange={handleChange}>
                         <option value="">Pick One</option>
-                        <option value="Mini coil">Mini coil</option>
-                        <option value="Kicker">Kicker</option>
-                        <option value="Downtrend Line">Downtrend Line</option>
-                        <option value="Breakout PB to 20EMA">
-                            Breakout PB to 20EMA
-                        </option>
-                        <option value="Gap up PB to 8EMA">
-                            Gap up PB to 8EMA
-                        </option>
-                        <option value="Pull Back to 50SMA">
-                            Pull Back to 50SMA
-                        </option>
-                        <option value="First Touch of the 10WK SMA">
-                            First Touch of the 10WK SMA
-                        </option>
-                        <option value="Kicker">Kickerk</option>
-                        <option value="De-risking">De-risking</option>
+                        <option value="stock">Stock</option>
+                        <option value="ETF">ETF</option>
+                        <option value="dividend">Dividend</option>
+                        <option value="foreign">Foreign Stock</option>
                     </select>
-                    {formErrors.tactical ? (
-                        <p>{formErrors.tactical}</p>
-                    ) : (
-                        <p> </p>
-                    )}
-                    {errors.tactical && <p>{errors.tactical.message}</p>}
+                    {formErrors.type ? <p>{formErrors.type}</p> : <p> </p>}
+                    {errors.type && <p>{errors.type.message}</p>}
                 </div>
                 {/* Add a third column */}
                 <div className="formCol">
@@ -245,12 +156,13 @@ const AddTrade = (props) => {
                                 id="closeTrade"
                                 value={stockState.closeTrade}
                                 onChange={handleChange}>
-                                <option value="none">Pick One</option>
-                                <option value="true">Yes</option>
                                 <option value="false">No</option>
+                                <option value="true">Yes</option>
                             </select>
                         </>
-                    ) : <></>}
+                    ) : (
+                        <></>
+                    )}
 
                     {stockState.buySell === "buy" ? (
                         <>
@@ -260,12 +172,13 @@ const AddTrade = (props) => {
                                 id="openTrade"
                                 value={stockState.openTrade}
                                 onChange={handleChange}>
-                                <option value="none">Pick One</option>
-                                <option value="true">Yes</option>
                                 <option value="false">No</option>
+                                <option value="true">Yes</option>
                             </select>
                         </>
-                    ) : <></>}
+                    ) : (
+                        <></>
+                    )}
                 </div>
             </form>
         </div>
