@@ -1,4 +1,4 @@
-import Trade from "../models/trade.model.js"
+import Trade from "../models/trade.model.js"        // Controller goes out and grabs what we need
 
 async function createTrade (req, res) {
     try {

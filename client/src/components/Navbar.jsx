@@ -5,10 +5,10 @@ const Navbar = () => {
         <div className="navRow"> {/* This is the parent div and FLEX ROW*/}
             <div className="navTitle">
                 <Link className="dashLink" to="/">
-                    Personal
+                    Trading
                 </Link>
                 <Link className="dashLink" to="/">
-                    Trader
+                    Tracker
                 </Link>
             </div>
             <div className="navLinks">
@@ -20,9 +20,6 @@ const Navbar = () => {
                 </Link>
                 <Link className="dashLink" to="/ledger">
                     Ledger
-                </Link>
-                <Link className="dashLink" to="/equitycurve">
-                    Equity Curve
                 </Link>
                 <Link className="dashLink" to="/stats">
                     Statistics

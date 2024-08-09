@@ -36,7 +36,6 @@ h1 {
   flex-direction: column;
   border-right: 2px solid #b4d4ee;
   padding: 20px;
-  font-weight: bolder;
 }
 
 .navLinks {
@@ -46,7 +45,6 @@ h1 {
   margin-right: 50px;
   align-items: center;
   font-size: large;
-  font-weight: bold;
 }
 
 .dashLink {
@@ -113,6 +111,7 @@ p {
   border-radius: 20px;
   font-weight: bolder;
   font-size: large;
+  cursor: pointer;
 }
 
 /* Trade History Table */
@@ -145,4 +144,34 @@ td {
 
 .ledgerSell {
   background-color: lightcoral;
+}
+
+.ledgerBtn {
+  padding: 10px;
+  margin-top: 30px;
+  background-color: whitesmoke;
+  color: #004e89;
+  border: 3px solid #004e89;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.linkBtn:visited {
+  color: #004e89
+}
+.linkBtn:link {
+  color: #004e89;
+  text-decoration: none;
+}
+
+.ledgerSell {
+  background-color: rgba(217, 76, 76, 0.741);
+}
+
+.ledgerBuy {
+  background-color: rgba(135, 209, 135, 0.501);
+}
+
+.hidden {
+  visibility: hidden;
 }

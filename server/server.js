@@ -3,6 +3,7 @@ import express from "express"; // Import Express framework (building server)
 import cors from "cors"; // Import CORS module to allow (middleware)
 import dotenv from "dotenv"; // Import dotenv to read environemnt variables from .env file
 import dbConnect from "./config/mongoose.config.js"; // Import function to connect to DB
+import yahooRouter from './routes/yahoo.routes.js'; // Import router for Yahoo Finance API      (controller -> router -> server)
 import router from "./routes/trade.routes.js";
 
 // Connect to database
@@ -19,6 +20,9 @@ dotenv.config();
 
 // Use the router middleware to handle API routes under /api prefix
 app.use('/api', router)
+
+// yahoo finance API
+app.use('/api', yahooRouter);
 
 // Start server and listen to port
 const PORT = process.env.PORT;

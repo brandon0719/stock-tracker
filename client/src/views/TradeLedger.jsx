@@ -1,33 +1,10 @@
 import StockService from "../services/StockService"
 import { useState, useEffect } from 'react' 
 import { Link } from "react-router-dom"
+import { dateChanger, totalCostFmt, formattedPrice } from "../utils/FormatFunctions"
 
 const TradeLedger = (props) => {
     const [stocks, setStocks] = useState([])
-
-    function dateChanger(dateISO) {
-        const dateObject = new Date(dateISO)
-        const newDate = `${(dateObject.getMonth() + 1).toString().padStart(2, '0')}/${dateObject.getDate().toString().padStart(2, '0')}/${dateObject.getFullYear()}`
-
-        return newDate
-    }
-
-    function totalCost(price, shares) {
-        const cost = price * shares
-        const formattedNumber = new Intl.NumberFormat('en-US', {
-            style: 'currency', 
-            currency: 'USD',
-        }).format(cost);
-        return formattedNumber
-    }
-
-    function formattedPrice(price) {
-        const formattedNumber = new Intl.NumberFormat('en-US', {
-            style: 'currency',
-            currency: 'USD'
-        }).format(price);
-        return formattedNumber;
-    }
 
     useEffect(() => {
         StockService.getAllStocks()
@@ -74,22 +51,34 @@ const TradeLedger = (props) => {
                         {stocks
                             .sort((a, b) => new Date(a.date) - new Date(b.date))
                             .map((stock) => (
-                                <tr key={stock._id} className={`${(stock.openTrade === true) ? 'ledgerBuy' : (stock.closeTrade === true) ? 'ledgerSell' : '' }`}> { /* Conditional class rendering */} 
+                                <tr
+                                    key={stock._id}
+                                    className={`${
+                                        stock.openTrade === true
+                                            ? "ledgerBuy"
+                                            : stock.closeTrade === true
+                                            ? "ledgerSell"
+                                            : ""
+                                    }`}>
+                                    {" "}
+                                    {/* Conditional class rendering */}
                                     <td>{dateChanger(stock.date)}</td>
                                     <td>{stock.ticker}</td>
                                     <td>{stock.buySell}</td>
                                     <td>{formattedPrice(stock.price)}</td>
                                     <td>{stock.shares}</td>
                                     <td>
-                                        {totalCost(stock.price, stock.shares)}
+                                        {totalCostFmt(stock.price, stock.shares)}
                                     </td>
                                     <td>{stock.shaper}</td>
                                     <td>{stock.type}</td>
                                     <td>{stock.openTrade ? "Yes" : ""}</td>
                                     <td>{stock.closeTrade ? "Yes" : ""}</td>
                                     <td>
-                                        <button>
-                                            <Link to={`/update/${stock._id}`}>
+                                        <button className="ledgerBtn">
+                                            <Link
+                                                className="linkBtn"
+                                                to={`/update/${stock._id}`}>
                                                 EDIT
                                             </Link>
                                         </button>
@@ -98,7 +87,8 @@ const TradeLedger = (props) => {
                                         <button
                                             onClick={() =>
                                                 deleteHandler(stock._id)
-                                            }>
+                                            }
+                                            className="ledgerBtn">
                                             DELETE
                                         </button>
                                     </td>

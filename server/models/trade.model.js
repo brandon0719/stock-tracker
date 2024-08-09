@@ -1,4 +1,4 @@
-import {model, Schema} from 'mongoose'
+import {model, Schema} from 'mongoose'  // Model is the blueprint for the data we are storing in the database
 const tradeSchema = new Schema(
     {
         ticker: {
@@ -6,6 +6,10 @@ const tradeSchema = new Schema(
             require: [true, "Ticker symbol is required"],
             minLength: [1, "Ticker symbol must be atleast 1 character"],
             maxLength: [5, "Ticker symbol cannot be more than 5 characters"],
+        },
+        name: {
+            type: String,
+            require: [true, "Name is required"]
         },
         date: {
             type: Date,

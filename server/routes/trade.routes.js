@@ -1,6 +1,6 @@
 import { Router } from 'express'
-import TradeController from '../controllers/trade.controller.js'
-const router = Router()
+import TradeController from '../controllers/trade.controller.js' 
+const router = Router() 
 
 // Create new trade
 router.route('/trades/add')
