@@ -24,8 +24,8 @@ const Navbar = () => {
                 <Link className="dashLink" to="/stats">
                     Statistics
                 </Link>
-                <Link className="dashLink" to="/todo">
-                    To Do
+                <Link className="dashLink" to="/watchlist">
+                    Watchlist
                 </Link>
             </div>
         </div>

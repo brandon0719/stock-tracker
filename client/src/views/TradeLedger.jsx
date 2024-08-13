@@ -54,21 +54,22 @@ const TradeLedger = (props) => {
                                 <tr
                                     key={stock._id}
                                     className={`${
-                                        stock.openTrade === true
+                                        stock.openTrade
                                             ? "ledgerBuy"
-                                            : stock.closeTrade === true
+                                            : stock.closeTrade
                                             ? "ledgerSell"
                                             : ""
                                     }`}>
-                                    {" "}
-                                    {/* Conditional class rendering */}
                                     <td>{dateChanger(stock.date)}</td>
                                     <td>{stock.ticker}</td>
                                     <td>{stock.buySell}</td>
                                     <td>{formattedPrice(stock.price)}</td>
                                     <td>{stock.shares}</td>
                                     <td>
-                                        {totalCostFmt(stock.price, stock.shares)}
+                                        {totalCostFmt(
+                                            stock.price,
+                                            stock.shares
+                                        )}
                                     </td>
                                     <td>{stock.shaper}</td>
                                     <td>{stock.type}</td>

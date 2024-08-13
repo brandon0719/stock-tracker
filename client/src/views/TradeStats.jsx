@@ -45,7 +45,6 @@ const TradeStats = (props) => {
                     <thead>
                         <tr>
                             <th>Ticker</th>
-                            <th>Name</th>
                             <th>Open Date</th>
                             <th>Close Date</th>
                             <th>Avg Open Price</th>
@@ -75,7 +74,6 @@ const TradeStats = (props) => {
                                     }`}>
                                     {/* {console.log(openTradeTrue(stock))} */}
                                     <td>{stock[0].ticker}</td>
-                                    <td>NAME</td>
                                     <td>{dateChanger(getOpenDate(stock))}</td>
                                     <td>{dateChanger(getCloseDate(stock))}</td>
                                     <td

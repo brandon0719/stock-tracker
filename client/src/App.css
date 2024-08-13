@@ -52,6 +52,10 @@ h1 {
   color: white;
 }
 
+.dashLink:hover {
+  color: #b4d4ee;
+}
+
 /* Add trade form */
 
 .tradeFormContainer {
@@ -86,7 +90,7 @@ select {
 
 p {
   font-weight: 200;
-  margin-top: 2px;
+
   color: #242424;
   text-align: left;
 }
@@ -174,4 +178,40 @@ td {
 
 .hidden {
   visibility: hidden;
+}
+
+/* Portfolio Section */
+
+.portfolioStats {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  gap: 20px; /* Space between the boxes */
+  margin: 40px auto;
+  width: 80vw;
+}
+
+.portfolioStat {
+  flex: 1;
+  border: 1px solid #ccc; /* Adds a border around each span */
+  padding: 20px; /* Adds padding inside the border */
+  border-radius: 8px; /* Rounds the corners of the box */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Adds a slight shadow for depth */
+}
+
+.portfolioStat h2 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: #004e89;
+}
+.portfolioStat p {
+  margin-top: 8px;
+  display: block;
+  text-align: center;
+}
+
+#portfolioSubHeader {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: #004e89;
 }

@@ -1,5 +1,6 @@
 // groupedTrades = [  [AMZN TRADE {AMZN1}, {AMZN2}, {AMZN3}], [NVDA TRADE {NVDA1}, {NVDA2}]  ]
 
+// Group trades by ticker 
 function groupTrades(trades) {
     const tradeGroups = new Map();
 
@@ -34,6 +35,45 @@ function groupTrades(trades) {
         (acc, groups) => acc.concat(groups),
         []
     );
+}
+
+// To get the amount of shares for each position
+
+function calculateShares(trades) {
+    const shareCounts = {};
+
+    trades.forEach((trade) => {
+        const { ticker, buySell, shares } = trade;
+
+        // Initialize the ticker in the object if it doesn't exist
+        if (!shareCounts[ticker]) {
+            shareCounts[ticker] = 0;
+        }
+
+        // Add or subtract shares based on whether it was a buy or sell
+        if (buySell === "buy") {
+            shareCounts[ticker] += shares;
+        } else if (buySell === "sell") {
+            shareCounts[ticker] -= shares;
+        }
+    });
+
+    return shareCounts;
+}
+
+// For portfolio stats : current amount invested 
+function currentInvested(tradeList) {
+    let total = 0;
+    tradeList.map(trade => trade.map(
+        trade => {
+            if (trade.buySell === "buy") {
+                total += trade.price * trade.shares;
+            } else {
+                total -= trade.price * trade.shares;
+            }
+        }
+    ))
+    return total;
 }
 
 function gainLoss(tradeList) {
@@ -163,4 +203,6 @@ export {
     gainLoss,
     openTradeTrue,
     currentShares,
+    currentInvested,
+    calculateShares
 };
