@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import YahooService from "../services/YahooService";
 import StockService from "../services/StockService";
@@ -51,7 +50,7 @@ const CurrentPortfolio = () => {
         // Fetch data initially
         calculateAssets();
 
-        // Set interval to update data every minute (300000 ms) - 5 minutes
+        // Set interval to update data every minute (300000 ms) - 5 minutes (limit because there is a limit on the number of requests)
         const intervalId = setInterval(calculateAssets, 300000);
 
         // Clear interval on component unmount
@@ -87,6 +86,7 @@ const CurrentPortfolio = () => {
                             <th>Name</th>
                             <th>Shares</th>
                             <th>LIVE Price</th>
+                            <th>Total</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -100,6 +100,12 @@ const CurrentPortfolio = () => {
                                         <td>
                                             {formattedPrice(
                                                 livePrices[ticker] || 0
+                                            )}
+                                        </td>
+                                        <td>
+                                            {formattedPrice(
+                                                shares[ticker] *
+                                                    (livePrices[ticker] || 0)
                                             )}
                                         </td>
                                     </tr>

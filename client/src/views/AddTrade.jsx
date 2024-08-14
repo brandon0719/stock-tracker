@@ -126,8 +126,8 @@ const AddTrade = (props) => {
                         value={stockState.type}
                         onChange={handleChange}>
                         <option value="">Pick One</option>
-                        <option value="stock">Stock</option>
-                        <option value="ETF">ETF</option>
+                        <option value="equity">Equity</option>
+                        <option value="etf">ETF</option>
                         <option value="dividend">Dividend</option>
                         <option value="foreign">Foreign Stock</option>
                     </select>

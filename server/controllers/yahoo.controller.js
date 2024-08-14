@@ -28,5 +28,8 @@ async function yfName(req, res) {
     }
 }
 
-const yFinanceController = { yfQuote: yfQuote, yfName: yfName };
+const yFinanceController = {
+    yfQuote: yfQuote,
+    yfName: yfName,
+};
 export default yFinanceController;

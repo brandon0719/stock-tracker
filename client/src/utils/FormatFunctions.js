@@ -46,7 +46,7 @@ function formattedPrice(price) {
 // Formats a given number as a percentage string with one decimal place
 function formattedPercent(num) {
     // Round the decimal to one decimal place
-    let formattedNum = num.toFixed(1) + "%";
+    let formattedNum = num.toFixed(2) + "%";
 
     return formattedNum;
 }

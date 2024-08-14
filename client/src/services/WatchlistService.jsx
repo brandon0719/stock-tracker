@@ -4,20 +4,19 @@ const http = axios.create({
     baseURL: "http://localhost:8000/api",
 });
 
-function getQuote(symbol) {
-    // console.log(symbol)
+function addToWatchlist(stock) {
     return http
-        .get(`/quote/${symbol}`)
+        .post("/watchlist/add", stock)
         .then((res) => res.data)
         .catch((err) => {
             throw err;
         });
 }
 
-function getName(symbol) {
-    // console.log(symbol)
+// Add other methods for interacting with the watchlist as needed
+function getWatchlist() {
     return http
-        .get(`/name/${symbol}`)
+        .get("/watchlist")
         .then((res) => res.data)
         .catch((err) => {
             throw err;
@@ -26,16 +25,16 @@ function getName(symbol) {
 
 function searchStocks(keywords) {
     return http
-        .get(`/search`, { params: { keywords } })
+        .get(`/watchlist/search`, { params: { keywords } })
         .then((res) => res.data)
         .catch((err) => {
             throw err;
         });
 }
 
-const YahooService = {
-    getQuote: getQuote,
-    getName: getName,
+const WatchlistService = {
+    addToWatchlist: addToWatchlist,
+    getWatchlist: getWatchlist,
     searchStocks: searchStocks,
 };
-export default YahooService;
+export default WatchlistService;
