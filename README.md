@@ -1,7 +1,3 @@
-Here's the updated `README.md` with the additional features included:
-
----
-
 # Stock Tracker Application
 
 Welcome to the Stock Tracker Application! This project is a comprehensive tool designed to help users manage and track their stock investments in real-time. The app allows users to search for stocks, add them to their watchlist, monitor key financial data, and track their portfolio performance.
