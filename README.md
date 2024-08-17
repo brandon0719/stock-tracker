@@ -82,4 +82,4 @@
 ```
 
 ## Live Demo
-[Watch the Video](/client/src/assets/Stock%20Tracker%20Demo.mp4)
+[![Watch the video](https://img.youtube.com/vi/aFVVvgHG88M/maxresdefault.jpg)](https://www.youtube.com/watch?v=aFVVvgHG88M)
