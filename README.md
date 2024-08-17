@@ -82,8 +82,5 @@
 ```
 
 ## Live Demo
-<video src="./client/src/assets/Demo.mp4" controls="controls" style="max-width: 100%;">
-  Your browser does not support the video tag.
-</video>
+[![Demo.mp4](./client/src/assets/Demo.mp4)](./client/src/assets/Demo.mp4)
 
-<!-- [![Watch the video](https://img.youtube.com/vi/aFVVvgHG88M/maxresdefault.jpg)](https://www.youtube.com/watch?v=aFVVvgHG88M) -->
