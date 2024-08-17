@@ -12,7 +12,7 @@ const Dashboard = () => {
                         <p>Manage your stock watchlist</p>
                     </div>
                 </Link>
-                <Link to="/portfolio" className="dashboard-card">
+                <Link to="/current" className="dashboard-card">
                     <div className="card-content">
                         <h2>Portfolio</h2>
                         <p>View your investment portfolio</p>

@@ -133,7 +133,7 @@ const Watchlist = () => {
                                 className={
                                     stock.change < 0 ? "price-down" : "price-up"
                                 }>
-                                {formattedPercent(stock.change)}
+                                {stock.change ? formattedPercent(stock.change): "N/A"}
                             </td>
                             <td>{formattedPrice(stock.high)}</td>
                             <td>{formattedPrice(stock.low)}</td>

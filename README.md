@@ -14,7 +14,7 @@
 
 - **Frontend**:
   - React
-  - HTML5 & CSS3
+  - HTML & CSS
   - JavaScript
 - **Backend**:
   - Node.js
@@ -82,3 +82,4 @@
 ```
 
 ## Live Demo
+[Watch the Video](/client/src/assets/Stock%20Tracker%20Demo.mp4)

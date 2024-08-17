@@ -12,8 +12,8 @@ import cron from "node-cron";
 import getQuote from "./services/yahooService.js";
 import watchlistModel from "./models/watchlist.model.js";
 
-cron.schedule("*/30 * * * *", async () => {
-    // Run every 30 minutes
+cron.schedule("* * * * *", async () => {
+    // Run every minutes
     const watchlist = await watchlistModel.find();
     for (let stock of watchlist) {
         const data = await getQuote(stock.symbol);
@@ -31,7 +31,17 @@ cron.schedule("*/30 * * * *", async () => {
         const date = ISOdate.toLocaleString("en-US", {
             timeZone: "America/New_York",
         });
-        await watchlistModel.updateOne({ _id: stock._id }, { name: name, price: price, change: changePercent, high: high, low: low, date: date });
+        await watchlistModel.updateOne(
+            { _id: stock._id },
+            {
+                name: name,
+                price: price,
+                change: changePercent,
+                high: high,
+                low: low,
+                date: date,
+            }
+        );
     }
     console.log("Watchlist prices updated");
 });
