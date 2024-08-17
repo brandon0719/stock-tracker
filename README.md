@@ -82,7 +82,5 @@
 ```
 
 ## Live Demo
-<!-- [![Demo.mp4](./client/src/assets/Demo.mp4)](./client/src/assets/Demo.mp4)
- -->
+https://github.com/user-attachments/assets/93692140-dddd-4a93-b5c4-4a192873f351
 
-[![Watch the video](https://img.youtube.com/vi/aFVVvgHG88M/maxresdefault.jpg)](https://www.youtube.com/watch?v=aFVVvgHG88M){:target="_blank"}
