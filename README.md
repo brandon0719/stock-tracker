@@ -1,4 +1,4 @@
-# Stock Tracker Application
+# Stock Portfolio Tracker Application
 
 ## Features
 
